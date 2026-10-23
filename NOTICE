@@ -1,0 +1,17 @@
+apple-ads-mcp-server
+Copyright 2026 GetMCPAds
+
+This product includes software developed at GetMCPAds (https://www.getmcpads.com).
+
+An open-source Model Context Protocol server for the Apple Ads Platform API.
+It is self-hosted and unaffiliated with Apple.
+
+GetMCPAds also runs a managed gateway that covers Apple Ads alongside
+Meta Ads, Google Ads, TikTok Ads, Pinterest Ads, X Ads, Google Analytics and
+Search Console, with hosted connections and cross-platform reporting:
+https://www.getmcpads.com
+
+---
+
+Apple, Apple Ads and App Store are trademarks of Apple Inc. This project is
+not affiliated with, endorsed by, or sponsored by Apple Inc.

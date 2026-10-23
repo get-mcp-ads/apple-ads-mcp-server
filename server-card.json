@@ -1,0 +1,1846 @@
+{
+  "serverInfo": {
+    "name": "@getmcpads/apple-ads-mcp-server",
+    "title": "Apple Ads MCP server: 9 read tools, 11 opt-in preview-first writes.",
+    "version": "1.0.0",
+    "websiteUrl": "https://www.getmcpads.com/tools/apple-ads",
+    "icons": [
+      {
+        "src": "https://mcp.getmcpads.com/icon.svg",
+        "mimeType": "image/svg+xml"
+      }
+    ]
+  },
+  "tools": [
+    {
+      "name": "apple_ads_list_ad_accounts",
+      "title": "apple ads list ad accounts",
+      "description": "List the Apple Ads ad accounts this server may use: entries of APPLE_ADS_AD_ACCOUNT_IDS that the API user can access, with organization and roles. Other accounts are never returned. Call this first.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_get_account",
+      "title": "apple ads get account",
+      "description": "Read the selected Apple ad account, including native currency, timezone and billing configuration.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          }
+        },
+        "required": [
+          "adAccountId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_get_campaigns",
+      "title": "apple ads get campaigns",
+      "description": "Read a page of Apple app campaigns, including paused campaigns. Native pagination is returned with nextOffset; offset/limit do not imply a complete account export.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000,
+            "default": 0,
+            "description": "Zero-based number of rows to skip. Pass nextOffset from the previous page."
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000,
+            "default": 100,
+            "description": "Maximum number of rows to return, from 1 to 1000. Use offset for more."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PAUSED",
+              "ENABLED"
+            ],
+            "description": "Only return campaigns with this status."
+          }
+        },
+        "required": [
+          "adAccountId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_get_campaign",
+      "title": "apple ads get campaign",
+      "description": "Read one Apple campaign and verify its account membership.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "campaignId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple campaign ID in the selected ad account."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "campaignId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_get_adgroups",
+      "title": "apple ads get adgroups",
+      "description": "Read a page of ad groups belonging to one Apple campaign. Native pagination is returned with nextOffset.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "campaignId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple campaign ID in the selected ad account."
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000,
+            "default": 0,
+            "description": "Zero-based number of rows to skip. Pass nextOffset from the previous page."
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000,
+            "default": 100,
+            "description": "Maximum number of rows to return, from 1 to 1000. Use offset for more."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "campaignId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_get_keywords",
+      "title": "apple ads get keywords",
+      "description": "Read a page of positive keywords belonging to one Apple ad group. Native pagination is returned with nextOffset.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "adGroupId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple ad group ID in the selected ad account."
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000,
+            "default": 0,
+            "description": "Zero-based number of rows to skip. Pass nextOffset from the previous page."
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000,
+            "default": 100,
+            "description": "Maximum number of rows to return, from 1 to 1000. Use offset for more."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "adGroupId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_get_app",
+      "title": "apple ads get app",
+      "description": "Read App Store app metadata available to the selected Apple ad account.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "adamId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "App Store app ID (Adam ID)."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "adamId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_get_app_eligibility",
+      "title": "apple ads get app eligibility",
+      "description": "Check an app's advertising eligibility and available storefronts before creating a campaign.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "adamId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "App Store app ID (Adam ID)."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "adamId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_get_report",
+      "title": "apple ads get report",
+      "description": "Read native Apple campaign, ad group, ad, keyword or search-term performance for explicit campaigns. Preserves spend currency, attribution metrics, timezone, native grand totals and pagination. Never sum ratios or assume a page is the entire account. Monthly/weekly/daily historical reports are supported subject to Apple retention. Omit granularity for period totals. Campaign reports accept up to 20 campaigns; other levels require exactly one campaign per call.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "campaignIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[1-9]\\d{0,14}$",
+              "description": "Apple numeric ID, as a string."
+            },
+            "minItems": 1,
+            "maxItems": 20,
+            "description": "Campaign IDs: up to 20 for campaigns; exactly one for adgroups, ads, keywords or searchterms."
+          },
+          "level": {
+            "type": "string",
+            "enum": [
+              "campaigns",
+              "adgroups",
+              "ads",
+              "keywords",
+              "searchterms"
+            ],
+            "default": "campaigns",
+            "description": "Report level: campaigns, adgroups, ads, keywords or searchterms."
+          },
+          "startDate": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "description": "First date of the reporting period, in YYYY-MM-DD format."
+          },
+          "endDate": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "description": "Last date of the reporting period, in YYYY-MM-DD format, on or after startDate and no later than today."
+          },
+          "timeZone": {
+            "type": "string",
+            "enum": [
+              "ORTZ",
+              "UTC"
+            ],
+            "default": "ORTZ",
+            "description": "Report timezone: account timezone (ORTZ) or UTC."
+          },
+          "granularity": {
+            "type": "string",
+            "enum": [
+              "HOURLY",
+              "DAILY",
+              "WEEKLY",
+              "MONTHLY"
+            ],
+            "description": "Time breakdown of granularMetrics. Omit for totals over the whole period."
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z0-9]*$",
+              "maxLength": 100
+            },
+            "minItems": 1,
+            "maxItems": 100,
+            "description": "Native metric names. Omit to retrieve all native metrics; Apple validates availability."
+          },
+          "groupBy": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "deviceClass",
+                "ageRange",
+                "gender",
+                "countryCode",
+                "adminArea",
+                "locality",
+                "storefront",
+                "countryOrRegion"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 3,
+            "description": "Native demographic or geographic grouping dimensions."
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000,
+            "default": 0,
+            "description": "Zero-based number of rows to skip. Pass nextOffset from the previous page."
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000,
+            "default": 100,
+            "description": "Maximum number of rows to return, from 1 to 1000. Use offset for more."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "campaignIds",
+          "startDate",
+          "endDate"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_create_campaign",
+      "title": "apple ads create campaign",
+      "description": "Create an App Store search-results campaign in PAUSED state. Requires an eligible app, explicit currency, budget and countries. No delivery is enabled by creation. Preview by default. Ask the user to approve the exact account, target and parameters before confirm:true.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "Name displayed in Apple Ads."
+          },
+          "adamId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "App Store app ID (Adam ID)."
+          },
+          "dailyBudget": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9]\\d{0,8})(?:\\.\\d{1,2})?$",
+                "description": "Positive decimal amount in major currency units, such as 1.50."
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$",
+                "description": "Account currency, ISO 4217."
+              }
+            },
+            "required": [
+              "amount",
+              "currency"
+            ],
+            "additionalProperties": false,
+            "description": "Positive decimal amount and the ad account currency."
+          },
+          "countries": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$"
+            },
+            "minItems": 1,
+            "maxItems": 100,
+            "description": "Eligible target storefront country codes, such as FR."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "name",
+          "adamId",
+          "dailyBudget",
+          "countries"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_create_adgroup",
+      "title": "apple ads create adgroup",
+      "description": "Create a PAUSED manual-CPT Apple ad group under a verified campaign. Automated keyword targeting is disabled. Preview by default. Ask the user to approve the exact account, target and parameters before confirm:true.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "campaignId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple campaign ID in the selected ad account."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "Name displayed in Apple Ads."
+          },
+          "bid": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9]\\d{0,8})(?:\\.\\d{1,2})?$",
+                "description": "Positive decimal amount in major currency units, such as 1.50."
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$",
+                "description": "Account currency, ISO 4217."
+              }
+            },
+            "required": [
+              "amount",
+              "currency"
+            ],
+            "additionalProperties": false,
+            "description": "Maximum cost-per-tap bid, in the campaign currency."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "campaignId",
+          "name",
+          "bid"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_create_keyword",
+      "title": "apple ads create keyword",
+      "description": "Create a PAUSED positive keyword in a verified Apple ad group. Preview by default. Ask the user to approve the exact account, target and parameters before confirm:true.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "adGroupId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple ad group ID in the selected ad account."
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "description": "Keyword text."
+          },
+          "matchType": {
+            "type": "string",
+            "enum": [
+              "EXACT",
+              "BROAD"
+            ],
+            "description": "Apple keyword match type."
+          },
+          "bid": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9]\\d{0,8})(?:\\.\\d{1,2})?$",
+                "description": "Positive decimal amount in major currency units, such as 1.50."
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$",
+                "description": "Account currency, ISO 4217."
+              }
+            },
+            "required": [
+              "amount",
+              "currency"
+            ],
+            "additionalProperties": false,
+            "description": "Keyword cost-per-tap bid, in the account currency."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "adGroupId",
+          "text",
+          "matchType",
+          "bid"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_create_account",
+      "title": "apple ads create account",
+      "description": "Create an additional Apple ad account in the API user's organization. Requires a configured anchor account in that same organization and Apple account-creation permissions. Currency, timezone and billing are inherited; no app delegations or delivery are configured. Add the new ID to APPLE_ADS_AD_ACCOUNT_IDS and restart before using it. Preview by default. Ask the user to approve the exact account, target and parameters before confirm:true.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "Name of the new ad account, unique within the organization."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "name"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_update_campaign",
+      "title": "apple ads update campaign",
+      "description": "Update an Apple campaign. Preview returns expectedSnapshot; confirm with that snapshot to reject changed resources or changed payloads. ENABLED may cause advertising spend. Preview by default. Ask the user to approve the exact account, target and parameters before confirm:true.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "entityId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple campaign ID in the selected ad account."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "Replacement name."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PAUSED",
+              "ENABLED"
+            ],
+            "description": "Desired status. ENABLED may cause spend if parents permit delivery."
+          },
+          "dailyBudget": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9]\\d{0,8})(?:\\.\\d{1,2})?$",
+                "description": "Positive decimal amount in major currency units, such as 1.50."
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$",
+                "description": "Account currency, ISO 4217."
+              }
+            },
+            "required": [
+              "amount",
+              "currency"
+            ],
+            "additionalProperties": false,
+            "description": "Replacement daily budget, in the account currency."
+          },
+          "expectedSnapshot": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Snapshot returned by the preview for this exact resource and requested change; required when confirming."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "entityId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_update_adgroup",
+      "title": "apple ads update adgroup",
+      "description": "Update an Apple ad group. Preview returns expectedSnapshot; confirm with that snapshot to reject changed resources or changed payloads. ENABLED may cause advertising spend. Preview by default. Ask the user to approve the exact account, target and parameters before confirm:true.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "entityId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple ad group ID in the selected ad account."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "Replacement name."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PAUSED",
+              "ENABLED"
+            ],
+            "description": "Desired status. ENABLED may cause spend if parents permit delivery."
+          },
+          "expectedSnapshot": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Snapshot returned by the preview for this exact resource and requested change; required when confirming."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "entityId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_update_keyword",
+      "title": "apple ads update keyword",
+      "description": "Update an Apple keyword. Preview returns expectedSnapshot; confirm with that snapshot to reject changed resources or changed payloads. ENABLED may cause advertising spend. Preview by default. Ask the user to approve the exact account, target and parameters before confirm:true.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "entityId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple keyword ID in the selected ad account."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PAUSED",
+              "ENABLED"
+            ],
+            "description": "Desired status. ENABLED may cause spend if parents permit delivery."
+          },
+          "bid": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9]\\d{0,8})(?:\\.\\d{1,2})?$",
+                "description": "Positive decimal amount in major currency units, such as 1.50."
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$",
+                "description": "Account currency, ISO 4217."
+              }
+            },
+            "required": [
+              "amount",
+              "currency"
+            ],
+            "additionalProperties": false,
+            "description": "Replacement keyword bid, in the account currency."
+          },
+          "expectedSnapshot": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Snapshot returned by the preview for this exact resource and requested change; required when confirming."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "entityId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_rename_campaign",
+      "title": "apple ads rename campaign",
+      "description": "Rename an Apple campaign. The name is the only thing that changes. Preview by default. Ask the user to approve the exact account, target and parameters before confirm:true.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "campaignId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple campaign ID in the selected ad account."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "New campaign name."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "campaignId",
+          "name"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_rename_adgroup",
+      "title": "apple ads rename adgroup",
+      "description": "Rename an Apple ad group. The name is the only thing that changes. Preview by default. Ask the user to approve the exact account, target and parameters before confirm:true.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "adGroupId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple ad group ID in the selected ad account."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "New ad group name."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "adGroupId",
+          "name"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_rename_ad",
+      "title": "apple ads rename ad",
+      "description": "Rename an Apple ad. The name is the only thing that changes. Preview by default. Ask the user to approve the exact account, target and parameters before confirm:true.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "adId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple ad ID in the selected ad account."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "New ad name."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "adId",
+          "name"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "apple_ads_rename_ad_account",
+      "title": "apple ads rename ad account",
+      "description": "Rename an Apple ad account. The name is the only thing that changes. Preview by default. Ask the user to approve the exact account, target and parameters before confirm:true.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "adAccountId": {
+            "type": "string",
+            "pattern": "^[1-9]\\d{0,14}$",
+            "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "New ad account name."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+          }
+        },
+        "required": [
+          "adAccountId",
+          "name"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    }
+  ],
+  "resources": [
+    {
+      "name": "Apple Ads guide",
+      "title": "Apple Ads guide",
+      "uri": "apple-ads://guide",
+      "description": "Account scope, money units, report rules, pagination and write safety for this server.",
+      "mimeType": "text/plain"
+    },
+    {
+      "name": "Apple Ads report catalog",
+      "title": "Apple Ads report catalog",
+      "uri": "apple-ads://report-catalog",
+      "description": "Native report metrics, additive metrics, grouping dimensions and the rules of each report level.",
+      "mimeType": "application/json"
+    }
+  ],
+  "prompts": []
+}

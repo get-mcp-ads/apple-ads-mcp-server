@@ -1,0 +1,67 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.getmcpads/apple-ads",
+  "title": "Apple Ads",
+  "description": "Apple Ads MCP server: 9 read tools, 11 opt-in preview-first writes.",
+  "version": "1.0.0",
+  "websiteUrl": "https://www.getmcpads.com/tools/apple-ads",
+  "repository": {
+    "url": "https://github.com/get-mcp-ads/apple-ads-mcp-server",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "@getmcpads/apple-ads-mcp-server",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "APPLE_ADS_CLIENT_ID",
+          "description": "clientId shown in Apple Ads under Account Settings > API.",
+          "isRequired": true,
+          "isSecret": false
+        },
+        {
+          "name": "APPLE_ADS_TEAM_ID",
+          "description": "teamId shown in Apple Ads under Account Settings > API.",
+          "isRequired": true,
+          "isSecret": false
+        },
+        {
+          "name": "APPLE_ADS_KEY_ID",
+          "description": "keyId shown in Apple Ads under Account Settings > API.",
+          "isRequired": true,
+          "isSecret": false
+        },
+        {
+          "name": "APPLE_ADS_PRIVATE_KEY",
+          "description": "EC P-256 private key in PEM text. Set this or APPLE_ADS_PRIVATE_KEY_PATH. Keep it secret.",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "APPLE_ADS_PRIVATE_KEY_PATH",
+          "description": "Absolute path to the private key PEM file, instead of APPLE_ADS_PRIVATE_KEY.",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "APPLE_ADS_AD_ACCOUNT_IDS",
+          "description": "Comma-separated allowed ad account IDs. Required even for reads.",
+          "isRequired": true,
+          "isSecret": false
+        },
+        {
+          "name": "APPLE_ADS_ENABLE_WRITES",
+          "description": "true enables write tools. Defaults to false.",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}
