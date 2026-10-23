@@ -1,7 +1,6 @@
 # Changelog
 
-## 1.0.0 - 2026-10-23
-
+## 1.0.0 - 2026-10-23 - First standalone release
 - Create the first standalone server for the Apple Ads Platform API v1, synchronized with getmcpads gateway revision 3e1c2c8.
 - Expose 9 read tools, 11 opt-in write tools and 2 resources, keeping the gateway tool names and the `apple_ads_` prefix.
 - Add `apple_ads_list_ad_accounts`, which replaces the hosted account selection and returns configured accounts only.

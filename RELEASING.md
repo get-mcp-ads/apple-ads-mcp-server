@@ -13,3 +13,5 @@ A version tag drives the whole release. The [Release workflow](.github/workflows
 5. Each step skips when its target already holds the version, so rerunning the workflow for an existing tag (Actions > Release > Run workflow) completes a partial release safely.
 
 Before the first release, configure a trusted publisher on npmjs.com for `@getmcpads/apple-ads-mcp-server` that points at this repository and `release.yml`, and set the `MCP_DNS_PRIVATE_KEY` repository secret.
+
+Before tagging, add the release to CHANGELOG.md as `## X.Y.Z - YYYY-MM-DD - Title`, then run `npm run release-history`. The README shows every release from the changelog, and the test suite fails when it falls behind.
