@@ -44,6 +44,15 @@ export function structuredResult<T extends { content: unknown[]; isError?: boole
 }
 
 export type ToolShape = Record<string, z.ZodTypeAny>;
+
+/** Zod 4 keeps a description on the schema that received it, so an optional,
+ * nullable or defaulted parameter must be read through its wrappers. */
+function ownDescription(schema: z.ZodTypeAny): string | undefined {
+  for (let current: any = schema; current; current = current._zod?.def?.innerType ?? current._zod?.def?.in) {
+    if (current.description) return current.description;
+  }
+  return undefined;
+}
 const resultShape = { result: z.union([z.object({}).passthrough(), z.array(z.unknown()), z.string(), z.number(), z.boolean(), z.null()]).describe(RESULT_SCHEMA.properties.result.description) };
 
 /** Adapt legacy tool registrations through the public SDK API. No credentials

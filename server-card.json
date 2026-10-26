@@ -2,7 +2,7 @@
   "serverInfo": {
     "name": "@getmcpads/apple-ads-mcp-server",
     "title": "Apple Ads MCP server: 9 read tools, 11 opt-in preview-first writes.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "websiteUrl": "https://www.getmcpads.com/tools/apple-ads",
     "icons": [
       {
@@ -29,7 +29,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -54,8 +54,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -83,7 +83,6 @@
         "required": [
           "adAccountId"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -94,7 +93,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -119,8 +118,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -145,32 +144,31 @@
             "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
           },
           "offset": {
+            "description": "Zero-based number of rows to skip. Pass nextOffset from the previous page.",
+            "default": 0,
             "type": "integer",
             "minimum": 0,
-            "maximum": 1000000,
-            "default": 0,
-            "description": "Zero-based number of rows to skip. Pass nextOffset from the previous page."
+            "maximum": 1000000
           },
           "limit": {
+            "description": "Maximum number of rows to return, from 1 to 1000. Use offset for more.",
+            "default": 100,
             "type": "integer",
             "minimum": 1,
-            "maximum": 1000,
-            "default": 100,
-            "description": "Maximum number of rows to return, from 1 to 1000. Use offset for more."
+            "maximum": 1000
           },
           "status": {
+            "description": "Only return campaigns with this status.",
             "type": "string",
             "enum": [
               "PAUSED",
               "ENABLED"
-            ],
-            "description": "Only return campaigns with this status."
+            ]
           }
         },
         "required": [
           "adAccountId"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -181,7 +179,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -206,8 +204,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -241,7 +239,6 @@
           "adAccountId",
           "campaignId"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -252,7 +249,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -277,8 +274,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -308,25 +305,24 @@
             "description": "Apple campaign ID in the selected ad account."
           },
           "offset": {
+            "description": "Zero-based number of rows to skip. Pass nextOffset from the previous page.",
+            "default": 0,
             "type": "integer",
             "minimum": 0,
-            "maximum": 1000000,
-            "default": 0,
-            "description": "Zero-based number of rows to skip. Pass nextOffset from the previous page."
+            "maximum": 1000000
           },
           "limit": {
+            "description": "Maximum number of rows to return, from 1 to 1000. Use offset for more.",
+            "default": 100,
             "type": "integer",
             "minimum": 1,
-            "maximum": 1000,
-            "default": 100,
-            "description": "Maximum number of rows to return, from 1 to 1000. Use offset for more."
+            "maximum": 1000
           }
         },
         "required": [
           "adAccountId",
           "campaignId"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -337,7 +333,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -362,8 +358,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -393,25 +389,24 @@
             "description": "Apple ad group ID in the selected ad account."
           },
           "offset": {
+            "description": "Zero-based number of rows to skip. Pass nextOffset from the previous page.",
+            "default": 0,
             "type": "integer",
             "minimum": 0,
-            "maximum": 1000000,
-            "default": 0,
-            "description": "Zero-based number of rows to skip. Pass nextOffset from the previous page."
+            "maximum": 1000000
           },
           "limit": {
+            "description": "Maximum number of rows to return, from 1 to 1000. Use offset for more.",
+            "default": 100,
             "type": "integer",
             "minimum": 1,
-            "maximum": 1000,
-            "default": 100,
-            "description": "Maximum number of rows to return, from 1 to 1000. Use offset for more."
+            "maximum": 1000
           }
         },
         "required": [
           "adAccountId",
           "adGroupId"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -422,7 +417,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -447,8 +442,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -482,7 +477,6 @@
           "adAccountId",
           "adamId"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -493,7 +487,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -518,8 +512,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -553,7 +547,6 @@
           "adAccountId",
           "adamId"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -564,7 +557,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -589,8 +582,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -615,17 +608,19 @@
             "description": "Apple Ads ad account ID from APPLE_ADS_AD_ACCOUNT_IDS. apple_ads_list_ad_accounts lists them."
           },
           "campaignIds": {
+            "minItems": 1,
+            "maxItems": 20,
             "type": "array",
             "items": {
               "type": "string",
               "pattern": "^[1-9]\\d{0,14}$",
               "description": "Apple numeric ID, as a string."
             },
-            "minItems": 1,
-            "maxItems": 20,
             "description": "Campaign IDs: up to 20 for campaigns; exactly one for adgroups, ads, keywords or searchterms."
           },
           "level": {
+            "description": "Report level: campaigns, adgroups, ads, keywords or searchterms.",
+            "default": "campaigns",
             "type": "string",
             "enum": [
               "campaigns",
@@ -633,9 +628,7 @@
               "ads",
               "keywords",
               "searchterms"
-            ],
-            "default": "campaigns",
-            "description": "Report level: campaigns, adgroups, ads, keywords or searchterms."
+            ]
           },
           "startDate": {
             "type": "string",
@@ -648,36 +641,39 @@
             "description": "Last date of the reporting period, in YYYY-MM-DD format, on or after startDate and no later than today."
           },
           "timeZone": {
+            "description": "Report timezone: account timezone (ORTZ) or UTC.",
+            "default": "ORTZ",
             "type": "string",
             "enum": [
               "ORTZ",
               "UTC"
-            ],
-            "default": "ORTZ",
-            "description": "Report timezone: account timezone (ORTZ) or UTC."
+            ]
           },
           "granularity": {
+            "description": "Time breakdown of granularMetrics. Omit for totals over the whole period.",
             "type": "string",
             "enum": [
               "HOURLY",
               "DAILY",
               "WEEKLY",
               "MONTHLY"
-            ],
-            "description": "Time breakdown of granularMetrics. Omit for totals over the whole period."
+            ]
           },
           "fields": {
+            "description": "Native metric names. Omit to retrieve all native metrics; Apple validates availability.",
+            "minItems": 1,
+            "maxItems": 100,
             "type": "array",
             "items": {
               "type": "string",
-              "pattern": "^[a-zA-Z][a-zA-Z0-9]*$",
-              "maxLength": 100
-            },
-            "minItems": 1,
-            "maxItems": 100,
-            "description": "Native metric names. Omit to retrieve all native metrics; Apple validates availability."
+              "maxLength": 100,
+              "pattern": "^[a-zA-Z][a-zA-Z0-9]*$"
+            }
           },
           "groupBy": {
+            "description": "Native demographic or geographic grouping dimensions.",
+            "minItems": 1,
+            "maxItems": 3,
             "type": "array",
             "items": {
               "type": "string",
@@ -691,24 +687,21 @@
                 "storefront",
                 "countryOrRegion"
               ]
-            },
-            "minItems": 1,
-            "maxItems": 3,
-            "description": "Native demographic or geographic grouping dimensions."
+            }
           },
           "offset": {
+            "description": "Zero-based number of rows to skip. Pass nextOffset from the previous page.",
+            "default": 0,
             "type": "integer",
             "minimum": 0,
-            "maximum": 1000000,
-            "default": 0,
-            "description": "Zero-based number of rows to skip. Pass nextOffset from the previous page."
+            "maximum": 1000000
           },
           "limit": {
+            "description": "Maximum number of rows to return, from 1 to 1000. Use offset for more.",
+            "default": 100,
             "type": "integer",
             "minimum": 1,
-            "maximum": 1000,
-            "default": 100,
-            "description": "Maximum number of rows to return, from 1 to 1000. Use offset for more."
+            "maximum": 1000
           }
         },
         "required": [
@@ -717,7 +710,6 @@
           "startDate",
           "endDate"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -728,7 +720,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -753,8 +745,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -811,19 +803,19 @@
             "description": "Positive decimal amount and the ad account currency."
           },
           "countries": {
+            "minItems": 1,
+            "maxItems": 100,
             "type": "array",
             "items": {
               "type": "string",
               "pattern": "^[A-Z]{2}$"
             },
-            "minItems": 1,
-            "maxItems": 100,
             "description": "Eligible target storefront country codes, such as FR."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout.",
             "default": false,
-            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+            "type": "boolean"
           }
         },
         "required": [
@@ -833,7 +825,6 @@
           "dailyBudget",
           "countries"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -844,7 +835,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -869,8 +860,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -927,9 +918,9 @@
             "description": "Maximum cost-per-tap bid, in the campaign currency."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout.",
             "default": false,
-            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+            "type": "boolean"
           }
         },
         "required": [
@@ -938,7 +929,6 @@
           "name",
           "bid"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -949,7 +939,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -974,8 +964,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -1040,9 +1030,9 @@
             "description": "Keyword cost-per-tap bid, in the account currency."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout.",
             "default": false,
-            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+            "type": "boolean"
           }
         },
         "required": [
@@ -1052,7 +1042,6 @@
           "matchType",
           "bid"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -1063,7 +1052,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1088,8 +1077,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -1120,16 +1109,15 @@
             "description": "Name of the new ad account, unique within the organization."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout.",
             "default": false,
-            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+            "type": "boolean"
           }
         },
         "required": [
           "adAccountId",
           "name"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -1140,7 +1128,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1165,8 +1153,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -1196,20 +1184,21 @@
             "description": "Apple campaign ID in the selected ad account."
           },
           "name": {
+            "description": "Replacement name.",
             "type": "string",
             "minLength": 1,
-            "maxLength": 200,
-            "description": "Replacement name."
+            "maxLength": 200
           },
           "status": {
+            "description": "Desired status. ENABLED may cause spend if parents permit delivery.",
             "type": "string",
             "enum": [
               "PAUSED",
               "ENABLED"
-            ],
-            "description": "Desired status. ENABLED may cause spend if parents permit delivery."
+            ]
           },
           "dailyBudget": {
+            "description": "Replacement daily budget, in the account currency.",
             "type": "object",
             "properties": {
               "amount": {
@@ -1227,25 +1216,23 @@
               "amount",
               "currency"
             ],
-            "additionalProperties": false,
-            "description": "Replacement daily budget, in the account currency."
+            "additionalProperties": false
           },
           "expectedSnapshot": {
+            "description": "Snapshot returned by the preview for this exact resource and requested change; required when confirming.",
             "type": "string",
-            "pattern": "^[a-f0-9]{64}$",
-            "description": "Snapshot returned by the preview for this exact resource and requested change; required when confirming."
+            "pattern": "^[a-f0-9]{64}$"
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout.",
             "default": false,
-            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+            "type": "boolean"
           }
         },
         "required": [
           "adAccountId",
           "entityId"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -1256,7 +1243,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1281,8 +1268,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -1312,35 +1299,34 @@
             "description": "Apple ad group ID in the selected ad account."
           },
           "name": {
+            "description": "Replacement name.",
             "type": "string",
             "minLength": 1,
-            "maxLength": 200,
-            "description": "Replacement name."
+            "maxLength": 200
           },
           "status": {
+            "description": "Desired status. ENABLED may cause spend if parents permit delivery.",
             "type": "string",
             "enum": [
               "PAUSED",
               "ENABLED"
-            ],
-            "description": "Desired status. ENABLED may cause spend if parents permit delivery."
+            ]
           },
           "expectedSnapshot": {
+            "description": "Snapshot returned by the preview for this exact resource and requested change; required when confirming.",
             "type": "string",
-            "pattern": "^[a-f0-9]{64}$",
-            "description": "Snapshot returned by the preview for this exact resource and requested change; required when confirming."
+            "pattern": "^[a-f0-9]{64}$"
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout.",
             "default": false,
-            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+            "type": "boolean"
           }
         },
         "required": [
           "adAccountId",
           "entityId"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -1351,7 +1337,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1376,8 +1362,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -1407,14 +1393,15 @@
             "description": "Apple keyword ID in the selected ad account."
           },
           "status": {
+            "description": "Desired status. ENABLED may cause spend if parents permit delivery.",
             "type": "string",
             "enum": [
               "PAUSED",
               "ENABLED"
-            ],
-            "description": "Desired status. ENABLED may cause spend if parents permit delivery."
+            ]
           },
           "bid": {
+            "description": "Replacement keyword bid, in the account currency.",
             "type": "object",
             "properties": {
               "amount": {
@@ -1432,25 +1419,23 @@
               "amount",
               "currency"
             ],
-            "additionalProperties": false,
-            "description": "Replacement keyword bid, in the account currency."
+            "additionalProperties": false
           },
           "expectedSnapshot": {
+            "description": "Snapshot returned by the preview for this exact resource and requested change; required when confirming.",
             "type": "string",
-            "pattern": "^[a-f0-9]{64}$",
-            "description": "Snapshot returned by the preview for this exact resource and requested change; required when confirming."
+            "pattern": "^[a-f0-9]{64}$"
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout.",
             "default": false,
-            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+            "type": "boolean"
           }
         },
         "required": [
           "adAccountId",
           "entityId"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -1461,7 +1446,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1486,8 +1471,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -1523,9 +1508,9 @@
             "description": "New campaign name."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout.",
             "default": false,
-            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+            "type": "boolean"
           }
         },
         "required": [
@@ -1533,7 +1518,6 @@
           "campaignId",
           "name"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -1544,7 +1528,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1569,8 +1553,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -1606,9 +1590,9 @@
             "description": "New ad group name."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout.",
             "default": false,
-            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+            "type": "boolean"
           }
         },
         "required": [
@@ -1616,7 +1600,6 @@
           "adGroupId",
           "name"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -1627,7 +1610,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1652,8 +1635,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -1689,9 +1672,9 @@
             "description": "New ad name."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout.",
             "default": false,
-            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+            "type": "boolean"
           }
         },
         "required": [
@@ -1699,7 +1682,6 @@
           "adId",
           "name"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -1710,7 +1692,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1735,8 +1717,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -1767,16 +1749,15 @@
             "description": "New ad account name."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout.",
             "default": false,
-            "description": "False previews. True applies the approved change once. Do not blindly retry a write after a timeout."
+            "type": "boolean"
           }
         },
         "required": [
           "adAccountId",
           "name"
         ],
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "outputSchema": {
@@ -1787,7 +1768,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1812,8 +1793,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,

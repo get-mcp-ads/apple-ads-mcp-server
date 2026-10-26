@@ -31,7 +31,7 @@ const schema = z.object({
   keyId: credential,
   privateKey: z.union([z.string().min(1), z.custom<KeyObject>(value => value instanceof KeyObject)]),
   allowedAccountIds: z.array(z.string().regex(/^[1-9]\d{0,14}$/)).min(1).max(200),
-  enableWrites: z.boolean().default(false),
+  enableWrites: z.boolean().prefault(false),
 }).strict();
 
 const HINTS: Record<string, string> = {
