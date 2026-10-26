@@ -30,10 +30,10 @@ const money = z.object({
 const date = (label: string) => z.string().regex(/^\d{4}-\d{2}-\d{2}$/)
   .refine(v => Number.isFinite(Date.parse(v)) && new Date(v).toISOString().slice(0, 10) === v, "Use a real date.").describe(label);
 const paging = {
-  offset: z.number().int().min(0).max(1_000_000).default(0).describe("Zero-based number of rows to skip. Pass nextOffset from the previous page."),
-  limit: z.number().int().min(1).max(1000).default(100).describe("Maximum number of rows to return, from 1 to 1000. Use offset for more."),
+  offset: z.number().int().min(0).max(1_000_000).prefault(0).describe("Zero-based number of rows to skip. Pass nextOffset from the previous page."),
+  limit: z.number().int().min(1).max(1000).prefault(100).describe("Maximum number of rows to return, from 1 to 1000. Use offset for more."),
 };
-const confirmation = { confirm: z.boolean().default(false).describe("False previews. True applies the approved change once. Do not blindly retry a write after a timeout.") };
+const confirmation = { confirm: z.boolean().prefault(false).describe("False previews. True applies the approved change once. Do not blindly retry a write after a timeout.") };
 const WRITE_NOTE = " Preview by default. Ask the user to approve the exact account, target and parameters before confirm:true.";
 const filter = (field: string, value: unknown) => ({ field, operator: "EQUALS", value });
 const page = (a: Args) => ({ offset: a.offset, pageSize: a.limit, fetchTotalCount: true });
@@ -125,10 +125,10 @@ export function registerAppleReads(c: Collector, api: AppleAdsClient, allowed: r
   register("get_app_eligibility", "Check an app's advertising eligibility and available storefronts before creating a campaign.", { adamId }, async a => api.request("/eligibilities/apps/query", a.adAccountId, { filters: [filter("adamId", a.adamId)], pagination: { offset: 0, pageSize: 100 } }));
   register("get_report", "Read native Apple campaign, ad group, ad, keyword or search-term performance for explicit campaigns. Preserves spend currency, attribution metrics, timezone, native grand totals and pagination. Never sum ratios or assume a page is the entire account. Monthly/weekly/daily historical reports are supported subject to Apple retention. Omit granularity for period totals. Campaign reports accept up to 20 campaigns; other levels require exactly one campaign per call.", {
     campaignIds: z.array(id).min(1).max(20).describe("Campaign IDs: up to 20 for campaigns; exactly one for adgroups, ads, keywords or searchterms."),
-    level: z.enum(["campaigns", "adgroups", "ads", "keywords", "searchterms"]).default("campaigns").describe("Report level: campaigns, adgroups, ads, keywords or searchterms."),
+    level: z.enum(["campaigns", "adgroups", "ads", "keywords", "searchterms"]).prefault("campaigns").describe("Report level: campaigns, adgroups, ads, keywords or searchterms."),
     startDate: date("First date of the reporting period, in YYYY-MM-DD format."),
     endDate: date("Last date of the reporting period, in YYYY-MM-DD format, on or after startDate and no later than today."),
-    timeZone: z.enum(["ORTZ", "UTC"]).default("ORTZ").describe("Report timezone: account timezone (ORTZ) or UTC."),
+    timeZone: z.enum(["ORTZ", "UTC"]).prefault("ORTZ").describe("Report timezone: account timezone (ORTZ) or UTC."),
     granularity: z.enum(["HOURLY", "DAILY", "WEEKLY", "MONTHLY"]).optional().describe("Time breakdown of granularMetrics. Omit for totals over the whole period."),
     fields: z.array(z.string().regex(/^[a-zA-Z][a-zA-Z0-9]*$/).max(100)).min(1).max(100).optional().describe("Native metric names. Omit to retrieve all native metrics; Apple validates availability."),
     groupBy: z.array(z.enum(["deviceClass", "ageRange", "gender", "countryCode", "adminArea", "locality", "storefront", "countryOrRegion"])).min(1).max(3).optional().describe("Native demographic or geographic grouping dimensions."),

@@ -28,16 +28,18 @@ Run locally with your own platform credentials and a client that supports stdio 
 ## What's new
 
 <!-- release-history:start -->
-**[v1.0.0: First standalone release](https://github.com/get-mcp-ads/apple-ads-mcp-server/releases/tag/v1.0.0) · October 23, 2026**
+**[v1.0.1: Zod 4 security update](https://github.com/get-mcp-ads/apple-ads-mcp-server/releases/tag/v1.0.1) · October 26, 2026**
 
-- Create the first standalone server for the Apple Ads Platform API v1, synchronized with getmcpads gateway revision 3e1c2c8.
-- Expose 9 read tools, 11 opt-in write tools and 2 resources, keeping the gateway tool names and the `apple_ads_` prefix.
-- Add `apple_ads_list_ad_accounts`, which replaces the hosted account selection and returns configured accounts only.
-- Sign OAuth 2 client credentials locally with an EC P-256 key read from the environment. Access tokens stay in memory.
-- Require an ad account allowlist, default to read-only, preview every write, bind updates to a snapshot and create entities paused.
-- Use fixed Apple hosts, refuse redirects, bound responses, time out requests and never retry an uncertain write.
-- Require Node.js 22.23.4, 24.22.1, 26.12.1 or a newer release, and warn on stderr when started on an older runtime.
-- No hosted alerts, creative UI or MCP Apps integrations.
+- Update `zod` to 4.6.7. Every Zod release before 4.6.6 is covered by the high-severity advisory GHSA-mrhx-c7xc-m3w5: validating an oversized constrained collection can exhaust memory, and no Zod 3 release carries the fix. `npm audit --omit=dev` reports no vulnerability again.
+- Keep the Zod 3 validation behaviour. A parameter default is still validated and completed before use, so an omitted object must still supply its required fields.
+- Keep each parameter's own description when the parameter is optional or has a default. Zod 4 stores a description on the wrapped schema only, so the shared fallback description could otherwise replace it.
+- Tool names, parameters and descriptions published over MCP are unchanged. `server-card.json` is regenerated with Zod 4's JSON Schema output, which spells some constraints differently.
+
+**Earlier releases**
+
+| Version | Date | Highlights |
+| --- | --- | --- |
+| 1.0.0 | October 23, 2026 | First standalone release |
 
 [Full changelog](CHANGELOG.md) · [All releases](https://github.com/get-mcp-ads/apple-ads-mcp-server/releases)
 <!-- release-history:end -->
@@ -53,7 +55,7 @@ Requires **Node.js 22.23.4, 24.22.1 or 26.12.1**, or a newer release of those li
 This is a GitHub source release. npm and MCP Registry versions are published separately. The commands below select this exact version. Once the npm package is published, `npx -y @getmcpads/apple-ads-mcp-server` runs the version currently available on npm.
 
 ```bash
-git clone --branch v1.0.0 --depth 1 https://github.com/get-mcp-ads/apple-ads-mcp-server.git
+git clone --branch v1.0.1 --depth 1 https://github.com/get-mcp-ads/apple-ads-mcp-server.git
 cd apple-ads-mcp-server
 npm ci
 npm run build

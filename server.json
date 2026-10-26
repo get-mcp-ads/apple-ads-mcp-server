@@ -3,7 +3,7 @@
   "name": "com.getmcpads/apple-ads",
   "title": "Apple Ads",
   "description": "Apple Ads MCP server: 9 read tools, 11 opt-in preview-first writes.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "websiteUrl": "https://www.getmcpads.com/tools/apple-ads",
   "repository": {
     "url": "https://github.com/get-mcp-ads/apple-ads-mcp-server",
@@ -14,7 +14,7 @@
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "@getmcpads/apple-ads-mcp-server",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "transport": {
         "type": "stdio"
       },

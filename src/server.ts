@@ -10,7 +10,7 @@ import { registerAppleResources } from "./resources.js";
 import { installToolQuality } from "./tool-quality.js";
 import { registerAppleReads, registerAppleWrites } from "./tools.js";
 
-export const PACKAGE_VERSION = "1.0.0";
+export const PACKAGE_VERSION = "1.0.1";
 
 export function createServer(input: AppleAdsConfig | AppleAdsConfigInput): McpServer {
   const config = validateConfig(input);
